@@ -1,0 +1,21 @@
+{
+  "name": "wow-token-tracker-backend",
+  "version": "1.0.0",
+  "description": "Wow token tracker backend project",
+  "main": "src/app.mjs",
+  "scripts": {
+    "start": "node src/app.mjs",
+    "start:dev": "nodemon src/app.mjs"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "type": "module"
+}
