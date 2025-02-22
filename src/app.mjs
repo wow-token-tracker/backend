@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import { connectDB } from "./config/db.mjs";
+import { tokenScheduler } from "./schedulers/tokenScheduler.mjs";
 
 const app = express();
 
@@ -9,6 +10,8 @@ const PORT = process.env.PORT || 3000;
 const startApp = async () => {
   try {
     await connectDB();
+
+    tokenScheduler();
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
