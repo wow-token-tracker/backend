@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import { connectDB } from "./config/db.mjs";
 import { tokenScheduler } from "./schedulers/tokenScheduler.mjs";
+import tokenRoutes from "./routes/tokenRoutes.mjs";
 
 const app = express();
 
@@ -12,6 +13,8 @@ const startApp = async () => {
     await connectDB();
 
     tokenScheduler();
+
+    app.use("/api/tokens", tokenRoutes);
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
