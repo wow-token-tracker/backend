@@ -73,4 +73,4 @@ const getTokens = async (region, period) => {
   }
 };
 
-export default { getTokens };
+export default { getTokens, saveTokens };
