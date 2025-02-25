@@ -10,13 +10,21 @@ const PORT = process.env.PORT || 3000;
 // 미들웨어 설정
 app.use(express.json());
 
-// DB 연결 설정
-connectDB();
-
 // 라우트 설정
 app.use("/api/tokens", tokenRoutes);
 
-// 서버 시작
-app.listen(PORT, () => {
-  logger.info(`Server is running on port ${PORT}`);
-});
+// DB 연결 및 서버 시작
+const startApp = async () => {
+  try {
+    await connectDB();
+
+    app.listen(PORT, () => {
+      logger.info(`Server is running on port ${PORT}.`);
+    });
+  } catch (err) {
+    logger.error("Failed to start app due to database connection failure.");
+    process.exit(1);
+  }
+};
+
+startApp();
