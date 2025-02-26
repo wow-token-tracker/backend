@@ -4,12 +4,15 @@ import logger from "./config/logger.js";
 import connectDB from "./config/db.js";
 import tokenRoutes from "./routes/tokenRoute.js";
 import scheduleTokenSaveJob from "./crons/tokenCron.js";
+import cors from "cors";
+import corsOptions from "./config/cors.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // 미들웨어 설정
 app.use(express.json());
+app.use(cors(corsOptions));
 
 // 라우트 설정
 app.use("/api/tokens", tokenRoutes);
